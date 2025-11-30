@@ -1,11 +1,11 @@
-function CourseBox(props){
-    console.log(props);
+function CourseBox({title : ti , details = "default" , time}){
+
     
     return(
         <div>
-            <h2>{props?.title}</h2>
-            <p>{props?.details}</p>
-            <span>time : {props?.time}</span>
+            <h2>{ti}</h2>
+            <p>{details}</p>
+            <span>time : {time}</span>
         </div>
     )
 }
