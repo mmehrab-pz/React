@@ -25,7 +25,7 @@ const data = [
 const myList = <ul>
   {data.map((val , i)=>{
     return(
-      <li className='list' key={i}>{val.id} : {val.name}</li>
+      <li className='bg-slate-500 text-white mb-4 capitalize' key={i}>{val.id} : {val.name}</li>
     )
   })}
 </ul>
