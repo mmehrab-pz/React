@@ -1,23 +1,33 @@
-'use client'
-import React, { useState } from 'react'
-import Link from 'next/link'
+"use client";
+import React, { useEffect, useState } from "react";
 
 export default function page() {
-const [name , setName] = useState('mehrab')
-const para = ()=>{
-    setName('sahar')
-}
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function getUser() {
+      try {
+        const url = "https://randomuser.me/api/?results=1";
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error("error");
+        }
+
+        const data = await response.json();        
+        setData(data.results)
+            console.log(data);
+      } catch(error) {
+        console.error(`something went wrong: ${error.message}`);
+      }
+    }
+    getUser()
+    
+  }, []);
   return (
     <>
-        <h1 className='text-[red] text-[18px]'>welcome to next</h1>
-        <h2 className='text-[yellow]'>{name}</h2>
-        <button onClick={para} className='px-2.5 py-1.5 rounded-sm border border-white cursor-pointer'>click to change</button>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, nemo.</p>
-        <ul>
-            <li><Link href='#'>home page</Link></li>
-            <li><Link href='about'>about page</Link></li>
-            <li><Link href='about/extra'>extra page</Link></li>
-        </ul>
+        <ul>{data.map((user,index)=>{
+             return <li key={index}> {user.name.first} {user.name.last} - {user.email} </li>
+        })}</ul>
     </>
   )
 }
