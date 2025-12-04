@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import Link from 'next/link'
 
 export default function page() {
 const [name , setName] = useState('mehrab')
@@ -12,6 +13,11 @@ const para = ()=>{
         <h2 className='text-[yellow]'>{name}</h2>
         <button onClick={para} className='px-2.5 py-1.5 rounded-sm border border-white cursor-pointer'>click to change</button>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, nemo.</p>
+        <ul>
+            <li><Link href='#'>home page</Link></li>
+            <li><Link href='about'>about page</Link></li>
+            <li><Link href='about/extra'>extra page</Link></li>
+        </ul>
     </>
   )
 }
