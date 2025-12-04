@@ -6,28 +6,39 @@ export default function page() {
   useEffect(() => {
     async function getUser() {
       try {
-        const url = "https://randomuser.me/api/?results=1";
+        const url = "https://randomuser.me/api/?results=10";
         const response = await fetch(url);
 
         if (!response.ok) {
           throw new Error("error");
         }
 
-        const data = await response.json();        
-        setData(data.results)
-            console.log(data);
-      } catch(error) {
+        const data = await response.json();
+        setData(data.results);
+        console.log(data);
+      } catch (error) {
         console.error(`something went wrong: ${error.message}`);
       }
     }
-    getUser()
-    
+    getUser();
   }, []);
   return (
     <>
-        <ul>{data.map((user,index)=>{
-             return <li key={index}> {user.name.first} {user.name.last} - {user.email} </li>
-        })}</ul>
+      <ul className="flex gap-2.5 flex-wrap">
+        {data.map((user, index) => {
+          return (
+            <li
+              className="border border-white rounded-sm px-2.5 py-1.5"
+              key={index}
+            >
+              <h2>
+               full name: {user.name.title} {user.name.first} {user.name.last}
+              </h2>
+              <h3>email: {user.email}</h3>
+            </li>
+          );
+        })}
+      </ul>
     </>
-  )
+  );
 }
