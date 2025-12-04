@@ -1,0 +1,17 @@
+.home{
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    >button{
+        padding-inline: 20px;
+        padding-block: 10px;
+        background-color: aqua;
+        border-radius: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
